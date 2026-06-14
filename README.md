@@ -307,6 +307,23 @@ Both EKS IRSA and AKS Workload Identity provide pod-level keyless identity:
 📖 **Full guide:** [`docs/kubernetes-to-gcp.md`](docs/kubernetes-to-gcp.md)  
 🐳 **Demo app:** [`examples/fastapi-gcs-service/`](examples/fastapi-gcs-service/) — Multi-cloud FastAPI GCS service
 
+## Enterprise Security Hardening
+
+Based on [GCP Official Best Practices](https://cloud.google.com/iam/docs/best-practices-for-using-workload-identity-federation) and aligned with CIS, SOC2, ISO 27001, and NIST 800-53.
+
+| Control | Description |
+|---------|-------------|
+| Dedicated WIF project | Centralized pool/provider management with org policy enforcement |
+| One provider per pool | Prevents subject collisions between providers |
+| Attribute conditions | Mandatory in production — restrict which identities can authenticate |
+| Immutable attributes | `assertion.arn` (AWS), `assertion.sub` (Azure) — never email |
+| VPC Service Controls | Restrict STS endpoint access + regional endpoints for data residency |
+| Data Access Logs | Enable for `sts.googleapis.com` and `iamcredentials.googleapis.com` |
+| Org policy constraints | Disable SA key creation/upload, restrict provider types |
+| IAM Deny Policies | Prevent accidental deletion of WIF resources |
+
+📖 **Full guide:** [`docs/enterprise-security-hardening.md`](docs/enterprise-security-hardening.md)
+
 ---
 
 ## Troubleshooting
