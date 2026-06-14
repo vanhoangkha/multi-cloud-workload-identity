@@ -273,6 +273,42 @@ Only the target GCP services incur costs (BigQuery, Storage, etc.) based on thei
 
 ---
 
+## Advanced Patterns
+
+### Hub-and-Spoke (Enterprise Multi-Cloud)
+
+For organizations with many AWS accounts and Azure subscriptions, the Hub-and-Spoke pattern routes all federation through dedicated trust anchors:
+
+- **AWS:** A dedicated hub account (no workloads) — one WIF provider
+- **Azure:** A single Entra ID App Registration — one WIF provider
+
+```
+AWS Spoke Accounts ──→ Hub Account ──→ GCP WIF Pool (aws-{env})
+Azure Subscriptions ──→ Hub App ──→ GCP WIF Pool (azure-{env})
+```
+
+**Key benefits:**
+- Scales to hundreds of workloads without adding WIF providers
+- Adding workloads requires only IAM changes (no GCP pool changes)
+- Centralized audit trail across both clouds
+- Environment isolation via separate pools
+
+📖 **Full guide:** [`docs/hub-and-spoke-pattern.md`](docs/hub-and-spoke-pattern.md)
+
+### Kubernetes to GCP (EKS + AKS)
+
+Both EKS IRSA and AKS Workload Identity provide pod-level keyless identity:
+
+| Platform | Flow |
+|----------|------|
+| EKS | Pod (IRSA) → Hub Role → GCP WIF (SigV4) → GCP SA |
+| AKS | Pod (Workload Identity) → Entra ID JWT → GCP WIF (OIDC) → GCP SA |
+
+📖 **Full guide:** [`docs/kubernetes-to-gcp.md`](docs/kubernetes-to-gcp.md)  
+🐳 **Demo app:** [`examples/fastapi-gcs-service/`](examples/fastapi-gcs-service/) — Multi-cloud FastAPI GCS service
+
+---
+
 ## Troubleshooting
 
 | Error | Cause | Fix |
