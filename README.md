@@ -28,7 +28,7 @@ This repository provides production-ready guides and verified examples for confi
 
 All use cases tested on 2026-03-29:
 
-```
+```text
 === AWS -> GCP ===
 UC1 BigQuery:   hamlet: 5318, kinghenryv: 5104, cymbeline: 4875    [PASS]
 UC2 Storage:    Auth successful                                      [PASS]
@@ -126,7 +126,7 @@ gcloud iam workload-identity-pools create-cred-config \
 
 ### 1. Pool and Provider Design
 
-```
+```text
 Organization
   |
   +-- Pool: aws-production
@@ -210,7 +210,8 @@ gcloud logging read 'resource.type="service_account" AND protoPayload.methodName
 
 - Restrict STS endpoint access via VPC Service Controls
 - Use regional STS endpoints for data residency requirements:
-  ```
+
+  ```text
   https://sts.us-central1.rep.googleapis.com/v1/token
   https://sts.europe-west1.rep.googleapis.com/v1/token
   ```
@@ -282,12 +283,13 @@ For organizations with many AWS accounts and Azure subscriptions, the Hub-and-Sp
 - **AWS:** A dedicated hub account (no workloads) — one WIF provider
 - **Azure:** A single Entra ID App Registration — one WIF provider
 
-```
+```text
 AWS Spoke Accounts ──→ Hub Account ──→ GCP WIF Pool (aws-{env})
 Azure Subscriptions ──→ Hub App ──→ GCP WIF Pool (azure-{env})
 ```
 
 **Key benefits:**
+
 - Scales to hundreds of workloads without adding WIF providers
 - Adding workloads requires only IAM changes (no GCP pool changes)
 - Centralized audit trail across both clouds

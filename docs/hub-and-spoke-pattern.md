@@ -6,7 +6,7 @@ The Hub-and-Spoke pattern provides a **unified federation architecture** for org
 
 ## Architecture
 
-```
+```text
 ┌─────────────────────────────────────┐    ┌──────────────────────────────────────┐
 │       AWS Spoke Accounts            │    │       Azure Spoke Subscriptions       │
 │                                     │    │                                       │
@@ -57,7 +57,7 @@ The Hub-and-Spoke pattern provides a **unified federation architecture** for org
 
 ## Pool and Provider Layout
 
-```
+```text
 GCP Organization
 │
 ├── Pool: aws-production
@@ -195,6 +195,7 @@ gcloud logging read '
 ## Terraform
 
 See [`terraform/`](../terraform/) for complete modules:
+
 - `terraform/aws-to-gcp/` — AWS Hub-and-Spoke module
 - `terraform/azure-to-gcp/` — Azure Hub-and-Spoke module
 

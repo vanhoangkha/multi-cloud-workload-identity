@@ -17,7 +17,7 @@ Both EKS (IRSA) and AKS (Workload Identity) provide pod-level cloud identity wit
 
 ## EKS IRSA → Hub Role → GCP WIF
 
-```
+```text
 EKS Pod (IRSA) → Spoke Role → Assume Hub Role → GCP WIF → GCP SA
 ```
 
@@ -68,7 +68,7 @@ def get_gcp_credentials():
 
 ## AKS Workload Identity → Entra ID → GCP WIF
 
-```
+```text
 AKS Pod (Workload Identity) → Entra ID JWT → GCP WIF → GCP SA
 ```
 
