@@ -1,9 +1,11 @@
 """Multi-cloud GCS service — supports both AWS and Azure WIF auth."""
-import os, logging
+import logging
+import os
 from contextlib import asynccontextmanager
+
 from fastapi import FastAPI, HTTPException
+from google.api_core.exceptions import Forbidden, NotFound
 from google.cloud import storage
-from google.api_core.exceptions import NotFound, Forbidden
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)

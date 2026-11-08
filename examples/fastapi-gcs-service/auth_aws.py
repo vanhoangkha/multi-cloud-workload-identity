@@ -1,5 +1,8 @@
 """AWS WIF auth: IRSA → Hub Role → GCP WIF → GCS client."""
-import os, logging, boto3
+import logging
+import os
+
+import boto3
 from google.auth import aws as google_aws
 from google.auth.transport.requests import Request
 from google.cloud import storage
