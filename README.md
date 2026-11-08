@@ -293,7 +293,7 @@ Azure Subscriptions ──→ Hub App ──→ GCP WIF Pool (azure-{env})
 - Centralized audit trail across both clouds
 - Environment isolation via separate pools
 
-📖 **Full guide:** [`docs/hub-and-spoke-pattern.md`](docs/hub-and-spoke-pattern.md)
+**Full guide:** [`docs/hub-and-spoke-pattern.md`](docs/hub-and-spoke-pattern.md)
 
 ### Kubernetes to GCP (EKS + AKS)
 
@@ -304,8 +304,8 @@ Both EKS IRSA and AKS Workload Identity provide pod-level keyless identity:
 | EKS | Pod (IRSA) → Hub Role → GCP WIF (SigV4) → GCP SA |
 | AKS | Pod (Workload Identity) → Entra ID JWT → GCP WIF (OIDC) → GCP SA |
 
-📖 **Full guide:** [`docs/kubernetes-to-gcp.md`](docs/kubernetes-to-gcp.md)  
-🐳 **Demo app:** [`examples/fastapi-gcs-service/`](examples/fastapi-gcs-service/) — Multi-cloud FastAPI GCS service
+**Full guide:** [`docs/kubernetes-to-gcp.md`](docs/kubernetes-to-gcp.md)
+**Demo app:** [`examples/fastapi-gcs-service/`](examples/fastapi-gcs-service/) — Multi-cloud FastAPI GCS service
 
 ## Enterprise Security Hardening
 
@@ -322,7 +322,7 @@ Based on [GCP Official Best Practices](https://cloud.google.com/iam/docs/best-pr
 | Org policy constraints | Disable SA key creation/upload, restrict provider types |
 | IAM Deny Policies | Prevent accidental deletion of WIF resources |
 
-📖 **Full guide:** [`docs/enterprise-security-hardening.md`](docs/enterprise-security-hardening.md)
+**Full guide:** [`docs/enterprise-security-hardening.md`](docs/enterprise-security-hardening.md)
 
 ---
 
